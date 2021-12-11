@@ -103,6 +103,16 @@ class Ajedrez():
             x = fichasAjedrez[value]['x'] + (fichasAjedrez[value]['x'] - 1)
             y = fichasAjedrez[value]['y'] + (fichasAjedrez[value]['y'] - 1)
             self.tablero[x][y] = ' ' + chr(fichasAjedrez[value]['chr']) + ' '
+            if value == 'CN' or value == 'CB':
+                self.tablero[x][y + 10] = ' ' + chr(fichasAjedrez[value]['chr']) + ' '
+            elif value == 'AN' or value == 'AB':
+                self.tablero[x][y + 6] = ' ' + chr(fichasAjedrez[value]['chr']) + ' '
+            elif value == 'TN' or value == 'TB':
+                self.tablero[x][y + 14] = ' ' + chr(fichasAjedrez[value]['chr']) + ' '
+            elif value == 'PN' or value == 'PB':
+                for i in range(17):
+                    if (i % 2) != 0 and i != 0:
+                        self.tablero[x][i] = ' ' + chr(fichasAjedrez[value]['chr']) + ' '
         for r in range(17):
             print(' '.join(self.tablero[r]))
 
