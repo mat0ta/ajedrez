@@ -56,27 +56,38 @@ fichasAjedrez = {
     }
 }
 
-
 class Ajedrez():
     def __init__(self):
         self.tablero = []
         self.jugador1 = ''
         self.jugador2 = ''
+        self.jungando = 0
 
     def crearTablero(self):
-        for i in range(17):
-            self.tablero.append(([' ']*17))
-        for a in range(17):
-            for b in range(17):
-                if (b % 2) == 0:
-                    if a == 0 or a == 16:
-                        self.tablero[a][b] = '--'
-                    else:
-                        self.tablero[a][b] = '||'
-                elif (a % 2) == 0:
-                    self.tablero[a][b] = '---'
-                elif (b % 2) != 0 or (a % 2) != 0:
-                    self.tablero[a][b] = '   '
+        n1 = 8
+        n2 = 65
+        for i in range(18):
+            self.tablero.append(([' ']*18))
+        for a in range(18):
+            for b in range(18):
+                if b != 17 and a != 17:
+                    if (b % 2) == 0:
+                        if a == 0 or a == 16:
+                            self.tablero[a][b] = '--'
+                        else:
+                            self.tablero[a][b] = '||'
+                    elif (a % 2) == 0:
+                        self.tablero[a][b] = '---'
+
+                    elif (b % 2) != 0 or (a % 2) != 0:
+                        self.tablero[a][b] = '   '
+                if a == 17 and (b % 2) == 0 and n2 != 73:
+                    self.tablero[a][b] = '   ' + chr(n2)
+                    n2 += 1
+                self.tablero[17][0] = '    A'
+                if b == 17 and (a % 2) != 0 and n1 > 0:
+                    self.tablero[a][b] = ' ' + str(n1)
+                    n1 -= 1
         for value in fichasAjedrez:
             x = fichasAjedrez[value]['x'] + (fichasAjedrez[value]['x'] - 1)
             y = fichasAjedrez[value]['y'] + (fichasAjedrez[value]['y'] - 1)
@@ -91,7 +102,7 @@ class Ajedrez():
                 for i in range(17):
                     if (i % 2) != 0 and i != 0:
                         self.tablero[x][i] = ' ' + chr(fichasAjedrez[value]['chr']) + ' '
-        for r in range(17):
+        for r in range(18):
             print(' '.join(self.tablero[r]))
         print('\n\nLas fichas son las siguientes: Rey (RY), Reina (RA), Torre (T), Alfil (A), Caballo (C) y Peon (P)\n\nDependiendo de tu color, tendrás que añadir la inicial del color que tengas al final de cada ficha.\n\nEjemplo:\nRey Blanco: RYB')
 
