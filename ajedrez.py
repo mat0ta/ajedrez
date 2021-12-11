@@ -55,6 +55,8 @@ fichasAjedrez = {
     }
 }
 
+# Creamos la clase principal para desarrollar el Ajedrez en ella
+
 class Ajedrez():
     def __init__(self):
         self.tablero = []
