@@ -1,6 +1,7 @@
 # Importamos los módulos requeridos para realizar la actividad.
 from os import *
 from time import *
+from colorama import *
 
 # Creamos las variables necesarias.
 fichasAjedrez = {
@@ -74,13 +75,18 @@ class Ajedrez():
                     self.tablero[a][b] = '---'
                 elif (b % 2) != 0 or (a % 2) != 0:
                     self.tablero[a][b] = '   '
-        for r in range(17):
-            print(' '.join(self.tablero[r]))
 
     def pedirNombres(self):
-        self.jugador1 = str(input('¿Cuál es el nombre del primer jugador?: '))
+        self.jugador1 = str(
+            input('¿Cuál es el nombre del primer jugador?: ' + Fore.RED))
         self.jugador2 = str(input('¿Y el nombre del segundo jugador?: '))
+
+    def inciarJuego(self):
+        a = Ajedrez()
+        print(Back.CYAN + Fore.BLACK + Style.DIM + '♔ Bienvenidos al Ajedrez ♚' +
+              Back.RESET + Fore.RESET + Style.RESET_ALL)
+        a.pedirNombres()
 
 
 a = Ajedrez()
-a.pedirNombres()
+a.inciarJuego()
