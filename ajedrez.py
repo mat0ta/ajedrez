@@ -65,26 +65,26 @@ class Ajedrez():
         self.jungando = 0 # Variable que determina de quién es el turno
     def crearTablero(self):
         n1 = 8
-        n2 = 65
+        n2 = 65 # Tando n1 como n2 son variables que sirven para más adelante realizar la creación del tablero
         for i in range(18):
-            self.tablero.append(([' ']*18))
+            self.tablero.append(([' ']*18)) # Crea una lista de listas a la cual se irán incorporando las "paredes" del tablero y las fichas
         for a in range(18):
             for b in range(18):
                 if b != 17 and a != 17:
                     if (b % 2) == 0:
                         if a == 0 or a == 16:
-                            self.tablero[a][b] = '--'
+                            self.tablero[a][b] = '--' # Posiciona las primeras columnas
                         else:
-                            self.tablero[a][b] = '||'
+                            self.tablero[a][b] = '||' # Posiciona las filas
                     elif (a % 2) == 0:
-                        self.tablero[a][b] = '---'
+                        self.tablero[a][b] = '---' # Rellena los espacios entre fila y fila con un elemento de mayor tamaño para que en este puedan entrar las fichas correctamente centradas.
 
                     elif (b % 2) != 0 or (a % 2) != 0:
                         self.tablero[a][b] = '   '
                 if a == 17 and (b % 2) == 0 and n2 != 73:
-                    self.tablero[a][b] = '   ' + chr(n2)
+                    self.tablero[a][b] = '   ' + chr(n2) # Coloca los números laterales que indican las coordenadas de las casillas.
                     n2 += 1
-                self.tablero[17][0] = '    A'
+                self.tablero[17][0] = '    A' # Se le da más espacio en la primera casilla para que las Letras que indican las coordenadas aparezcan centradas
                 if b == 17 and (a % 2) != 0 and n1 > 0:
                     self.tablero[a][b] = ' ' + str(n1)
                     n1 -= 1
