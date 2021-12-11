@@ -1,6 +1,5 @@
 # Importamos los módulos requeridos para realizar la actividad.
-from os import *
-from time import *
+import os
 from colorama import *
 
 # Creamos las variables necesarias.
@@ -101,7 +100,6 @@ class Ajedrez():
                 for i in range(17):
                     if (i % 2) != 0 and i != 0:
                         self.tablero[x][i] = ' ' + chr(fichasAjedrez[value]['chr']) + ' '
-        aj.printTablero()
     def printTablero(self):
         for r in range(18):
             print(' '.join(self.tablero[r]))
@@ -109,6 +107,7 @@ class Ajedrez():
         self.jugador1 = str(input('¿Cuál es el nombre del primer jugador?: ' + Fore.GREEN))
         self.jugador2 = str(input(Fore.RESET + '¿Y el nombre del segundo jugador?: ' + Fore.BLUE))
         print(Fore.RESET)
+        aj.printTablero()
     def movimiento(self):
         if self.jungando == 0:
             print('Turno de ' + Fore.GREEN + self.jugador1 + Fore.RESET)
@@ -142,6 +141,7 @@ class Ajedrez():
                         return aj.movimiento()
                 self.tablero[int(x2)][int(y2)] = self.tablero[int(x)][int(y)]
                 self.tablero[int(x)][int(y)] = '   '
+                os.system('cls')
                 aj.printTablero()
                 return aj.movimiento()
     def inciarJuego(self):
