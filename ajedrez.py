@@ -55,6 +55,8 @@ fichasAjedrez = {
     }
 }
 
+separator = '============================================='
+
 # Creamos la clase principal para desarrollar el Ajedrez en ella
 
 class Ajedrez():
@@ -129,8 +131,20 @@ class Ajedrez():
         y = xold + (xold - 1)
         x = 8 - (int(yold) - 1)
         x = x + (x - 1)
-        print(x, y)
-        for i in range(9812, 9823):
+        founded = False
+        for h in range(9812, 9824):
+            print(h, ord(self.tablero[int(x)][int(y)][1:2]))
+            if h == ord(self.tablero[int(x)][int(y)][1:2]):
+                founded = True
+        if not founded:
+            if self.jungando == 0:
+                self.jungando = 1
+            else:
+                self.jungando = 0
+            print('Aqui no hay ninguna Ficha para mover, prueba con otra casilla.')
+            return aj.movimiento()
+        print('Inicio del For')
+        for i in range(9812, 9824):
             if i == ord(self.tablero[int(x)][int(y)][1:2]):
                 print('Hay una ficha')
                 xold2 = ord(destino[:1].upper()) - 64
@@ -138,8 +152,8 @@ class Ajedrez():
                 y2 = xold2 + (xold2 - 1)
                 x2 = 8 - (int(yold2) - 1)
                 x2 = x2 + (x2 - 1)
-                for i in range(9812, 9823):
-                    if i == ord(self.tablero[int(x2)][int(y2)][1:2]):
+                for j in range(9812, 9823):
+                    if j == ord(self.tablero[int(x2)][int(y2)][1:2]):
                         if self.jungando == 0:
                             self.jungando = 1
                         else:
@@ -153,9 +167,14 @@ class Ajedrez():
                 toWrite = []
                 for r in range(18):
                     toWrite.append(' '.join(self.tablero[r]) + '\n')
-                with open('./tablero.txt', 'w', encoding="utf-8") as f:
+                with open('./tablero.txt', 'a', encoding="utf-8") as f:
+                    if self.jungando == 0:
+                        f.write(separator + ' Movimento de ' + self.jugador2 + ' ' + separator + '\n')
+                    else:
+                        f.write(separator + ' Movimento de ' + self.jugador1 + ' ' + separator + '\n')
                     f.writelines(toWrite)
                 return aj.movimiento()
+        print('Final del For')
     def inciarJuego(self):
         print(Back.CYAN + Fore.BLACK + Style.DIM + '♔ Bienvenidos al Ajedrez ♚' +
               Back.RESET + Fore.RESET + Style.RESET_ALL)
