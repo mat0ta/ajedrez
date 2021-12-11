@@ -88,9 +88,6 @@ class Ajedrez():
                 if b == 17 and (a % 2) != 0 and n1 > 0:
                     self.tablero[a][b] = ' ' + str(n1) # De la misma manera que con las Letras, se colocan los números.
                     n1 -= 1
-        toWrite = []
-        for r in range(18):
-            toWrite.append(' '.join(self.tablero[r]) + '\n')
         for value in fichasAjedrez:
             x = fichasAjedrez[value]['x'] + (fichasAjedrez[value]['x'] - 1) # Se ajustan las coordenadas a usar para que se adapten al tablero debido a que en este hay líneas que delimitan el tablero.
             y = fichasAjedrez[value]['y'] + (fichasAjedrez[value]['y'] - 1)
@@ -105,7 +102,10 @@ class Ajedrez():
                 for i in range(17):
                     if (i % 2) != 0 and i != 0:
                         self.tablero[x][i] = ' ' + chr(fichasAjedrez[value]['chr']) + ' ' # Si la ficha es un Peón, añade peones a lo largo de toda la fila en la que el primer Peón se encuentra.
-        with open('./tablero.txt', 'w') as f:
+        toWrite = []
+        for r in range(18):
+            toWrite.append(' '.join(self.tablero[r]) + '\n')
+        with open('./tablero.txt', 'w', encoding="utf-8") as f:
             f.writelines(toWrite)
     def printTablero(self):
         for r in range(18):
@@ -150,6 +150,11 @@ class Ajedrez():
                 self.tablero[int(x)][int(y)] = '   '
                 os.system('cls')
                 aj.printTablero()
+                toWrite = []
+                for r in range(18):
+                    toWrite.append(' '.join(self.tablero[r]) + '\n')
+                with open('./tablero.txt', 'w', encoding="utf-8") as f:
+                    f.writelines(toWrite)
                 return aj.movimiento()
     def inciarJuego(self):
         print(Back.CYAN + Fore.BLACK + Style.DIM + '♔ Bienvenidos al Ajedrez ♚' +
