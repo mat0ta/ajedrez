@@ -113,8 +113,13 @@ class Ajedrez():
         yold = ficha[1:2]
         y = xold + (xold - 1)
         x = 8 - (int(yold) - 1)
+        x = x + (x - 1)
         print(x, int(y))
         print(self.tablero[int(x)][int(y)])
+        print(self.tablero[int(x)][int(y)][:1])
+        for i in range(65, 73):
+            if i == ord(self.tablero[int(x)][int(y)][:1]):
+                print('Hay una ficha')
     def inciarJuego(self):
         print(Back.CYAN + Fore.BLACK + Style.DIM + '♔ Bienvenidos al Ajedrez ♚' +
               Back.RESET + Fore.RESET + Style.RESET_ALL)
@@ -124,4 +129,4 @@ class Ajedrez():
 
 aj = Ajedrez()
 aj.crearTablero()
-aj.movimiento('h2')
+aj.movimiento('e1')
