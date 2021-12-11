@@ -77,15 +77,15 @@ class Ajedrez():
                     self.tablero[a][b] = '   '
 
     def pedirNombres(self):
-        self.jugador1 = str(
-            input('¿Cuál es el nombre del primer jugador?: ' + Fore.RED))
-        self.jugador2 = str(input('¿Y el nombre del segundo jugador?: '))
+        self.jugador1 = str(input('¿Cuál es el nombre del primer jugador?: ' + Fore.RED))
+        self.jugador2 = str(input(Fore.RESET + '¿Y el nombre del segundo jugador?: ' + Fore.BLUE))
 
     def inciarJuego(self):
         a = Ajedrez()
         print(Back.CYAN + Fore.BLACK + Style.DIM + '♔ Bienvenidos al Ajedrez ♚' +
               Back.RESET + Fore.RESET + Style.RESET_ALL)
         a.pedirNombres()
+        print(Fore.RESET)
 
 
 a = Ajedrez()
