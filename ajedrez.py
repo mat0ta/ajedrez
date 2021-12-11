@@ -147,11 +147,9 @@ class Ajedrez():
     def inciarJuego(self):
         print(Back.CYAN + Fore.BLACK + Style.DIM + '♔ Bienvenidos al Ajedrez ♚' +
               Back.RESET + Fore.RESET + Style.RESET_ALL)
-        aj.pedirNombres()
-        print(Fore.RESET)
         aj.crearTablero()
+        aj.pedirNombres()
+        aj.movimiento()
 
 aj = Ajedrez()
-aj.crearTablero()
-aj.pedirNombres()
-aj.movimiento()
+aj.inciarJuego()
