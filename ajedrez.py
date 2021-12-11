@@ -104,11 +104,11 @@ class Ajedrez():
                         self.tablero[x][i] = ' ' + chr(fichasAjedrez[value]['chr']) + ' '
         for r in range(18):
             print(' '.join(self.tablero[r]))
-        print('\n\nLas fichas son las siguientes: Rey (RY), Reina (RA), Torre (T), Alfil (A), Caballo (C) y Peon (P)\n\nDependiendo de tu color, tendrás que añadir la inicial del color que tengas al final de cada ficha.\n\nEjemplo:\nRey Blanco: RYB')
-
     def pedirNombres(self):
         self.jugador1 = str(input('¿Cuál es el nombre del primer jugador?: ' + Fore.RED))
         self.jugador2 = str(input(Fore.RESET + '¿Y el nombre del segundo jugador?: ' + Fore.BLUE))
+    # def movimiento(self):
+    #     self.tablero[]
 
     def inciarJuego(self):
         print(Back.CYAN + Fore.BLACK + Style.DIM + '♔ Bienvenidos al Ajedrez ♚' +
