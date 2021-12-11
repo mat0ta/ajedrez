@@ -56,28 +56,6 @@ fichasAjedrez = {
     }
 }
 
-# # Creación del Tablero
-# rawTablero = []
-# for i in range(17):
-#     rawTablero.append(([' ']*17))
-
-# for a in range(17):
-#     for b in range(17):
-#         if (b % 2) == 0:
-#             if a == 0 or a == 16:
-#                 rawTablero[a][b] = '--'
-#             else:
-#                 rawTablero[a][b] = '||'
-#         elif (a % 2) == 0:
-#             rawTablero[a][b] = '---'
-#         elif (b % 2) != 0 or (a % 2) != 0:
-#             rawTablero[a][b] = '   '
-
-# rawTablero[1][1] = ' ' + chr(9820) + ' '
-
-# for r in range(17):
-#     print(' '.join(rawTablero[r]))
-
 
 class Ajedrez():
     def __init__(self):
