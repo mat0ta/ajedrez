@@ -42,4 +42,4 @@ fichasAjedrez = {
         'pos2': 5
     }
 }
-print(fichasAjedrez[0].keys())
+print(fichasAjedrez.keys())
