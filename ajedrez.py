@@ -116,9 +116,9 @@ class Ajedrez():
         x = x + (x - 1)
         print(x, int(y))
         print(self.tablero[int(x)][int(y)])
-        print(self.tablero[int(x)][int(y)][:1])
-        for i in range(65, 73):
-            if i == ord(self.tablero[int(x)][int(y)][:1]):
+        print(self.tablero[int(x)][int(y)][1:2], ord(self.tablero[int(x)][int(y)][1:2]), ord('♘'))
+        for i in range(9812, 9823):
+            if i == ord(self.tablero[int(x)][int(y)][1:2]):
                 print('Hay una ficha')
     def inciarJuego(self):
         print(Back.CYAN + Fore.BLACK + Style.DIM + '♔ Bienvenidos al Ajedrez ♚' +
