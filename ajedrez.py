@@ -6,29 +6,53 @@ from colorama import *
 # Creamos las variables necesarias.
 fichasAjedrez = {
     'RYB': {  # ♔
-        'chr': 9812
+        'chr': 9812,
+        'x': 8,
+        'y': 5
     }, 'RAB': {  # ♕
-        'chr': 9813
+        'chr': 9813,
+        'x': 8,
+        'y': 4
     }, 'TB': {  # ♖
-        'chr': 9814
+        'chr': 9814,
+        'x': 8,
+        'y': 1
     }, 'AB': {  # ♗
-        'chr': 9815
+        'chr': 9815,
+        'x': 8,
+        'y': 3
     }, 'CB': {  # ♘
-        'chr': 9816
+        'chr': 9816,
+        'x': 8,
+        'y': 2
     }, 'PB': {  # ♙
-        'chr': 9817
+        'chr': 9817,
+        'x': 7,
+        'y': 1
     }, 'RYN': {  # ♚
-        'chr': 9818
+        'chr': 9818,
+        'x': 1,
+        'y': 5
     }, 'RAN': {  # ♛
-        'chr': 9819
+        'chr': 9819,
+        'x': 1,
+        'y': 4
     }, 'TN': {  # ♜
-        'chr': 9820
+        'chr': 9820,
+        'x': 1,
+        'y': 1
     }, 'AN': {  # ♝
-        'chr': 9821
+        'chr': 9821,
+        'x': 1,
+        'y': 3
     }, 'CN': {  # ♞
-        'chr': 9822
+        'chr': 9822,
+        'x': 1,
+        'y': 2
     }, 'PN': {  # ♟
-        'chr': 9823
+        'chr': 9823,
+        'x': 2,
+        'y': 1
     }
 }
 
@@ -75,6 +99,12 @@ class Ajedrez():
                     self.tablero[a][b] = '---'
                 elif (b % 2) != 0 or (a % 2) != 0:
                     self.tablero[a][b] = '   '
+        for value in fichasAjedrez:
+            x = fichasAjedrez[value]['x'] + (fichasAjedrez[value]['x'] - 1)
+            y = fichasAjedrez[value]['y'] + (fichasAjedrez[value]['y'] - 1)
+            self.tablero[x][y] = ' ' + chr(fichasAjedrez[value]['chr']) + ' '
+        for r in range(17):
+            print(' '.join(self.tablero[r]))
 
     def pedirNombres(self):
         self.jugador1 = str(input('¿Cuál es el nombre del primer jugador?: ' + Fore.RED))
@@ -85,7 +115,9 @@ class Ajedrez():
               Back.RESET + Fore.RESET + Style.RESET_ALL)
         a.pedirNombres()
         print(Fore.RESET)
+        a.crearTablero()
+
 
 
 a = Ajedrez()
-a.inciarJuego()
+a.crearTablero()
