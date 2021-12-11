@@ -59,10 +59,10 @@ fichasAjedrez = {
 
 class Ajedrez():
     def __init__(self):
-        self.tablero = []
-        self.jugador1 = ''
-        self.jugador2 = ''
-        self.jungando = 0
+        self.tablero = [] # Aquí se almacenará el tablero con la posición de las fichas
+        self.jugador1 = '' # Nombre del primer jugador
+        self.jugador2 = '' # Nombre del segundo jugador
+        self.jungando = 0 # Variable que determina de quién es el turno
     def crearTablero(self):
         n1 = 8
         n2 = 65
