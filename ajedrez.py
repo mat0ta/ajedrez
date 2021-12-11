@@ -133,7 +133,6 @@ class Ajedrez():
         x = x + (x - 1)
         founded = False
         for h in range(9812, 9824):
-            print(h, ord(self.tablero[int(x)][int(y)][1:2]))
             if h == ord(self.tablero[int(x)][int(y)][1:2]):
                 founded = True
         if not founded:
@@ -141,9 +140,10 @@ class Ajedrez():
                 self.jungando = 1
             else:
                 self.jungando = 0
+            os.system('cls')
+            aj.printTablero()
             print('Aqui no hay ninguna Ficha para mover, prueba con otra casilla.')
             return aj.movimiento()
-        print('Inicio del For')
         for i in range(9812, 9824):
             if i == ord(self.tablero[int(x)][int(y)][1:2]):
                 print('Hay una ficha')
@@ -174,7 +174,6 @@ class Ajedrez():
                         f.write(separator + ' Movimento de ' + self.jugador1 + ' ' + separator + '\n')
                     f.writelines(toWrite)
                 return aj.movimiento()
-        print('Final del For')
     def inciarJuego(self):
         print(Back.CYAN + Fore.BLACK + Style.DIM + '♔ Bienvenidos al Ajedrez ♚' +
               Back.RESET + Fore.RESET + Style.RESET_ALL)
