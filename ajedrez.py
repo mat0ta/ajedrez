@@ -64,8 +64,8 @@ class Ajedrez():
         self.jugador2 = '' # Nombre del segundo jugador
         self.jungando = 0 # Variable que determina de quién es el turno
     def crearTablero(self):
-        n1 = 8
-        n2 = 65 # Tando n1 como n2 son variables que sirven para más adelante realizar la creación del tablero
+        n1 = 8 # Tando n1 como n2 son variables que sirven para más adelante realizar la creación del tablero
+        n2 = 65
         for i in range(18):
             self.tablero.append(([' ']*18)) # Crea una lista de listas a la cual se irán incorporando las "paredes" del tablero y las fichas
         for a in range(18):
@@ -89,26 +89,26 @@ class Ajedrez():
                     self.tablero[a][b] = ' ' + str(n1) # De la misma manera que con las Letras, se colocan los números.
                     n1 -= 1
         for value in fichasAjedrez:
-            x = fichasAjedrez[value]['x'] + (fichasAjedrez[value]['x'] - 1)
+            x = fichasAjedrez[value]['x'] + (fichasAjedrez[value]['x'] - 1) # Se ajustan las coordenadas a usar para que se adapten al tablero debido a que en este hay líneas que delimitan el tablero.
             y = fichasAjedrez[value]['y'] + (fichasAjedrez[value]['y'] - 1)
-            self.tablero[x][y] = ' ' + chr(fichasAjedrez[value]['chr']) + ' '
+            self.tablero[x][y] = ' ' + chr(fichasAjedrez[value]['chr']) + ' ' # Se colocan las fichas empleando las coordenadas registradas en la variable fichasAjedrez.
             if value == 'CN' or value == 'CB':
-                self.tablero[x][y + 10] = ' ' + chr(fichasAjedrez[value]['chr']) + ' '
+                self.tablero[x][y + 10] = ' ' + chr(fichasAjedrez[value]['chr']) + ' ' # Si la ficha es un Caballo, la duplica en la posición opuesta del tablero, ya que hay 2
             elif value == 'AN' or value == 'AB':
-                self.tablero[x][y + 6] = ' ' + chr(fichasAjedrez[value]['chr']) + ' '
+                self.tablero[x][y + 6] = ' ' + chr(fichasAjedrez[value]['chr']) + ' ' # Si la ficha es un Alfil, la duplica en la posición opuesta del tablero, ya que hay 2
             elif value == 'TN' or value == 'TB':
-                self.tablero[x][y + 14] = ' ' + chr(fichasAjedrez[value]['chr']) + ' '
+                self.tablero[x][y + 14] = ' ' + chr(fichasAjedrez[value]['chr']) + ' ' # Si la ficha es una Torre, la duplica en la posición opuesta del tablero, ya que hay 2
             elif value == 'PN' or value == 'PB':
                 for i in range(17):
                     if (i % 2) != 0 and i != 0:
-                        self.tablero[x][i] = ' ' + chr(fichasAjedrez[value]['chr']) + ' '
+                        self.tablero[x][i] = ' ' + chr(fichasAjedrez[value]['chr']) + ' ' # Si la ficha es un Peón, añade peones a lo largo de toda la fila en la que el primer Peón se encuentra.
     def printTablero(self):
         for r in range(18):
-            print(' '.join(self.tablero[r]))
+            print(' '.join(self.tablero[r])) # Printea el trablero sin brackets, comillas y comas, en varias líneas; con el objetivo de dar la imagen de tablero real.
     def pedirNombres(self):
-        self.jugador1 = str(input('¿Cuál es el nombre del primer jugador?: ' + Fore.GREEN))
-        self.jugador2 = str(input(Fore.RESET + '¿Y el nombre del segundo jugador?: ' + Fore.BLUE))
-        print(Fore.RESET)
+        self.jugador1 = str(input('¿Cuál es el nombre del primer jugador?: ' + Fore.GREEN)) # Registra el nombre del primer jugador
+        self.jugador2 = str(input(Fore.RESET + '¿Y el nombre del segundo jugador?: ' + Fore.BLUE)) # Registra el nombre del segundo jugador
+        print(Fore.RESET) # Resetea el color del texto para que no sea azul constantemente.
         aj.printTablero()
     def movimiento(self):
         if self.jungando == 0:
