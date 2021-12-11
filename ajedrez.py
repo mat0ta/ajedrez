@@ -81,7 +81,6 @@ class Ajedrez():
         self.jugador2 = str(input(Fore.RESET + '¿Y el nombre del segundo jugador?: ' + Fore.BLUE))
 
     def inciarJuego(self):
-        a = Ajedrez()
         print(Back.CYAN + Fore.BLACK + Style.DIM + '♔ Bienvenidos al Ajedrez ♚' +
               Back.RESET + Fore.RESET + Style.RESET_ALL)
         a.pedirNombres()
