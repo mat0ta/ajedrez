@@ -57,10 +57,11 @@ for a in range(17):
             else:
                 rawTablero[a][b] = '||'
         elif (a % 2) == 0:
-            rawTablero[a][b] = '--'
+            rawTablero[a][b] = '---'
         elif (b % 2) != 0 or (a % 2) != 0:
-            rawTablero[a][b] = '  '
+            rawTablero[a][b] = '   '
+
+rawTablero[1][1] = ' ' + chr(9820) + ' '
 
 for r in range(17):
-    # print(' '.join(rawTablero[r]))
     print(' '.join(rawTablero[r]))
