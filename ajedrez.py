@@ -62,7 +62,6 @@ class Ajedrez():
         self.jugador1 = ''
         self.jugador2 = ''
         self.jungando = 0
-
     def crearTablero(self):
         n1 = 8
         n2 = 65
@@ -102,22 +101,28 @@ class Ajedrez():
                 for i in range(17):
                     if (i % 2) != 0 and i != 0:
                         self.tablero[x][i] = ' ' + chr(fichasAjedrez[value]['chr']) + ' '
+        aj.printTablero()
+    def printTablero(self):
         for r in range(18):
             print(' '.join(self.tablero[r]))
     def pedirNombres(self):
         self.jugador1 = str(input('¿Cuál es el nombre del primer jugador?: ' + Fore.RED))
         self.jugador2 = str(input(Fore.RESET + '¿Y el nombre del segundo jugador?: ' + Fore.BLUE))
-    # def movimiento(self):
-    #     self.tablero[]
-
+    def movimiento(self, ficha, destino):
+        x = int(ord(ficha[:1])) - 64
+        y = int(ficha[:2])
+        self.tablero[x][y]
     def inciarJuego(self):
         print(Back.CYAN + Fore.BLACK + Style.DIM + '♔ Bienvenidos al Ajedrez ♚' +
               Back.RESET + Fore.RESET + Style.RESET_ALL)
-        a.pedirNombres()
+        aj.pedirNombres()
         print(Fore.RESET)
-        a.crearTablero()
+        aj.crearTablero()
 
+ficha = 'A7'
+x = ord(ficha[:1]) - 64
+y = ficha[1:2]
+print(x, y)
 
-
-a = Ajedrez()
-a.crearTablero()
+aj = Ajedrez()
+aj.crearTablero()
