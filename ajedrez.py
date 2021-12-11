@@ -108,18 +108,23 @@ class Ajedrez():
     def pedirNombres(self):
         self.jugador1 = str(input('¿Cuál es el nombre del primer jugador?: ' + Fore.RED))
         self.jugador2 = str(input(Fore.RESET + '¿Y el nombre del segundo jugador?: ' + Fore.BLUE))
-    def movimiento(self, ficha):
+    def movimiento(self, ficha, destino):
         xold = ord(ficha[:1].upper()) - 64
         yold = ficha[1:2]
         y = xold + (xold - 1)
         x = 8 - (int(yold) - 1)
         x = x + (x - 1)
-        print(x, int(y))
-        print(self.tablero[int(x)][int(y)])
-        print(self.tablero[int(x)][int(y)][1:2], ord(self.tablero[int(x)][int(y)][1:2]), ord('♘'))
         for i in range(9812, 9823):
             if i == ord(self.tablero[int(x)][int(y)][1:2]):
                 print('Hay una ficha')
+                xold2 = ord(destino[:1].upper()) - 64
+                yold2 = destino[1:2]
+                y2 = xold2 + (xold2 - 1)
+                x2 = 8 - (int(yold2) - 1)
+                x2 = x2 + (x2 - 1)
+                for i in range(9812, 9823):
+                    if i == ord(self.tablero[int(x2)][int(y2)][1:2]):
+                        return print('Aqui hay una ficha, prueba con otra casilla.')
     def inciarJuego(self):
         print(Back.CYAN + Fore.BLACK + Style.DIM + '♔ Bienvenidos al Ajedrez ♚' +
               Back.RESET + Fore.RESET + Style.RESET_ALL)
@@ -129,4 +134,4 @@ class Ajedrez():
 
 aj = Ajedrez()
 aj.crearTablero()
-aj.movimiento('e1')
+aj.movimiento('c1', 'e2')
