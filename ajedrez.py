@@ -6,11 +6,11 @@ from time import *
 fichasAjedrez = {
     'RYB': {  # ♔
         'chr': 9812
-    }, 'RNB': {  # ♕
+    }, 'RAB': {  # ♕
         'chr': 9813
-    }, 'TN': {  # ♖
+    }, 'TB': {  # ♖
         'chr': 9814
-    }, 'AN': {  # ♗
+    }, 'AB': {  # ♗
         'chr': 9815
     }, 'CB': {  # ♘
         'chr': 9816
@@ -18,7 +18,7 @@ fichasAjedrez = {
         'chr': 9817
     }, 'RYN': {  # ♚
         'chr': 9818
-    }, 'RNN': {  # ♛
+    }, 'RAN': {  # ♛
         'chr': 9819
     }, 'TN': {  # ♜
         'chr': 9820
@@ -31,25 +31,52 @@ fichasAjedrez = {
     }
 }
 
+# # Creación del Tablero
+# rawTablero = []
+# for i in range(17):
+#     rawTablero.append(([' ']*17))
 
-# Creación del Tablero
-rawTablero = []
-for i in range(17):
-    rawTablero.append(([' ']*17))
+# for a in range(17):
+#     for b in range(17):
+#         if (b % 2) == 0:
+#             if a == 0 or a == 16:
+#                 rawTablero[a][b] = '--'
+#             else:
+#                 rawTablero[a][b] = '||'
+#         elif (a % 2) == 0:
+#             rawTablero[a][b] = '---'
+#         elif (b % 2) != 0 or (a % 2) != 0:
+#             rawTablero[a][b] = '   '
 
-for a in range(17):
-    for b in range(17):
-        if (b % 2) == 0:
-            if a == 0 or a == 16:
-                rawTablero[a][b] = '--'
-            else:
-                rawTablero[a][b] = '||'
-        elif (a % 2) == 0:
-            rawTablero[a][b] = '---'
-        elif (b % 2) != 0 or (a % 2) != 0:
-            rawTablero[a][b] = '   '
+# rawTablero[1][1] = ' ' + chr(9820) + ' '
 
-rawTablero[1][1] = ' ' + chr(9820) + ' '
+# for r in range(17):
+#     print(' '.join(rawTablero[r]))
 
-for r in range(17):
-    print(' '.join(rawTablero[r]))
+
+class Ajedrez():
+    def __init__(self):
+        self.tablero = []
+        self.jugador1 = ''
+        self.jugador2 = ''
+
+    def crearTablero(self):
+        for i in range(17):
+            self.tablero.append(([' ']*17))
+        for a in range(17):
+            for b in range(17):
+                if (b % 2) == 0:
+                    if a == 0 or a == 16:
+                        self.tablero[a][b] = '--'
+                    else:
+                        self.tablero[a][b] = '||'
+                elif (a % 2) == 0:
+                    self.tablero[a][b] = '---'
+                elif (b % 2) != 0 or (a % 2) != 0:
+                    self.tablero[a][b] = '   '
+        for r in range(17):
+            print(' '.join(self.tablero[r]))
+
+
+a = Ajedrez()
+a.crearTablero()
