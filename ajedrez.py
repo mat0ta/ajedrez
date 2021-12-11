@@ -42,4 +42,26 @@ fichasAjedrez = {
         'y': 5
     }
 }
-print(fichasAjedrez.keys())
+
+
+# Creación del Tablero
+
+rawTablero = []
+for i in range(16):
+    rawTablero.append(([' ']*16))
+
+for a in range(16):
+    for b in range(16):
+        if (b % 2) == 0 and a != 0 and a != 15:
+            rawTablero[a][b] = '||'
+        # elif a == 0 or a == 15:
+        #     if b != 0 and b != 15:
+        #         rawTablero[a][b] = '---'
+        #     else:
+        #         rawTablero[a][b] = '||'
+        if (a % 2) == 0:
+            rawTablero[a][b] = '---'
+
+for r in range(16):
+    # print(' '.join(rawTablero[r]))
+    print(rawTablero[r])
