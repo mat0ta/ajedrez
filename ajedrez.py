@@ -88,6 +88,9 @@ class Ajedrez():
                 if b == 17 and (a % 2) != 0 and n1 > 0:
                     self.tablero[a][b] = ' ' + str(n1) # De la misma manera que con las Letras, se colocan los números.
                     n1 -= 1
+        toWrite = []
+        for r in range(18):
+            toWrite.append(' '.join(self.tablero[r]) + '\n')
         for value in fichasAjedrez:
             x = fichasAjedrez[value]['x'] + (fichasAjedrez[value]['x'] - 1) # Se ajustan las coordenadas a usar para que se adapten al tablero debido a que en este hay líneas que delimitan el tablero.
             y = fichasAjedrez[value]['y'] + (fichasAjedrez[value]['y'] - 1)
@@ -102,6 +105,8 @@ class Ajedrez():
                 for i in range(17):
                     if (i % 2) != 0 and i != 0:
                         self.tablero[x][i] = ' ' + chr(fichasAjedrez[value]['chr']) + ' ' # Si la ficha es un Peón, añade peones a lo largo de toda la fila en la que el primer Peón se encuentra.
+        with open('./tablero.txt', 'w') as f:
+            f.writelines(toWrite)
     def printTablero(self):
         for r in range(18):
             print(' '.join(self.tablero[r])) # Printea el trablero sin brackets, comillas y comas, en varias líneas; con el objetivo de dar la imagen de tablero real.
@@ -109,9 +114,9 @@ class Ajedrez():
         self.jugador1 = str(input('¿Cuál es el nombre del primer jugador?: ' + Fore.GREEN)) # Registra el nombre del primer jugador
         self.jugador2 = str(input(Fore.RESET + '¿Y el nombre del segundo jugador?: ' + Fore.BLUE)) # Registra el nombre del segundo jugador
         print(Fore.RESET) # Resetea el color del texto para que no sea azul constantemente.
-        aj.printTablero()
+        aj.printTablero() # Printea el tablero para que los jugadores puedan verlo.
     def movimiento(self):
-        if self.jungando == 0:
+        if self.jungando == 0: # Con esta condición comprueba de quien es el turno (gracias a la variable self.jugando) y printea su nombre para informar de que es su turno.
             print('Turno de ' + Fore.GREEN + self.jugador1 + Fore.RESET)
             self.jungando = 1
         else:
