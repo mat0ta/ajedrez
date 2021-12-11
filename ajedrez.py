@@ -77,6 +77,10 @@ class Ajedrez():
         for r in range(17):
             print(' '.join(self.tablero[r]))
 
+    def pedirNombres(self):
+        self.jugador1 = str(input('¿Cuál es el nombre del primer jugador?: '))
+        self.jugador2 = str(input('¿Y el nombre del segundo jugador?: '))
+
 
 a = Ajedrez()
-a.crearTablero()
+a.pedirNombres()
