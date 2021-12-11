@@ -82,11 +82,11 @@ class Ajedrez():
                     elif (b % 2) != 0 or (a % 2) != 0:
                         self.tablero[a][b] = '   '
                 if a == 17 and (b % 2) == 0 and n2 != 73:
-                    self.tablero[a][b] = '   ' + chr(n2) # Coloca los números laterales que indican las coordenadas de las casillas.
+                    self.tablero[a][b] = '   ' + chr(n2) # Coloca las Letras laterales que indican las coordenadas de las casillas. Se emplea la variable n2 para que se creen las letras necesarias exactamente gracias al código ASCII de las mismas, el cual es ascendente y continuo
                     n2 += 1
                 self.tablero[17][0] = '    A' # Se le da más espacio en la primera casilla para que las Letras que indican las coordenadas aparezcan centradas
                 if b == 17 and (a % 2) != 0 and n1 > 0:
-                    self.tablero[a][b] = ' ' + str(n1)
+                    self.tablero[a][b] = ' ' + str(n1) # De la misma manera que con las Letras, se colocan los números.
                     n1 -= 1
         for value in fichasAjedrez:
             x = fichasAjedrez[value]['x'] + (fichasAjedrez[value]['x'] - 1)
