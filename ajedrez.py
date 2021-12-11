@@ -108,10 +108,13 @@ class Ajedrez():
     def pedirNombres(self):
         self.jugador1 = str(input('¿Cuál es el nombre del primer jugador?: ' + Fore.RED))
         self.jugador2 = str(input(Fore.RESET + '¿Y el nombre del segundo jugador?: ' + Fore.BLUE))
-    def movimiento(self, ficha, destino):
-        x = int(ord(ficha[:1])) - 64
-        y = int(ficha[:2])
-        self.tablero[x][y]
+    def movimiento(self, ficha):
+        xold = ord(ficha[:1].upper()) - 64
+        yold = ficha[1:2]
+        y = xold + (xold - 1)
+        x = 8 - (int(yold) - 1)
+        print(x, int(y))
+        print(self.tablero[int(x)][int(y)])
     def inciarJuego(self):
         print(Back.CYAN + Fore.BLACK + Style.DIM + '♔ Bienvenidos al Ajedrez ♚' +
               Back.RESET + Fore.RESET + Style.RESET_ALL)
@@ -119,10 +122,6 @@ class Ajedrez():
         print(Fore.RESET)
         aj.crearTablero()
 
-ficha = 'A7'
-x = ord(ficha[:1]) - 64
-y = ficha[1:2]
-print(x, y)
-
 aj = Ajedrez()
 aj.crearTablero()
+aj.movimiento('h2')
