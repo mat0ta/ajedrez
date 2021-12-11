@@ -106,14 +106,24 @@ class Ajedrez():
         for r in range(18):
             print(' '.join(self.tablero[r]))
     def pedirNombres(self):
-        self.jugador1 = str(input('¿Cuál es el nombre del primer jugador?: ' + Fore.RED))
+        self.jugador1 = str(input('¿Cuál es el nombre del primer jugador?: ' + Fore.GREEN))
         self.jugador2 = str(input(Fore.RESET + '¿Y el nombre del segundo jugador?: ' + Fore.BLUE))
-    def movimiento(self, ficha, destino):
+        print(Fore.RESET)
+    def movimiento(self):
+        if self.jungando == 0:
+            print('Turno de ' + Fore.GREEN + self.jugador1 + Fore.RESET)
+            self.jungando = 1
+        else:
+            print('Turno de ' + Fore.BLUE + self.jugador2 + Fore.RESET)
+            self.jungando = 0
+        ficha = input('Introduce las coordenadas de la posición de la Ficha que quieres mover: ')
+        destino = input('Introduce las coordenadas de la posición de la Casilla a donde quieres mover la Ficha: ')
         xold = ord(ficha[:1].upper()) - 64
         yold = ficha[1:2]
         y = xold + (xold - 1)
         x = 8 - (int(yold) - 1)
         x = x + (x - 1)
+        print(x, y)
         for i in range(9812, 9823):
             if i == ord(self.tablero[int(x)][int(y)][1:2]):
                 print('Hay una ficha')
@@ -124,7 +134,16 @@ class Ajedrez():
                 x2 = x2 + (x2 - 1)
                 for i in range(9812, 9823):
                     if i == ord(self.tablero[int(x2)][int(y2)][1:2]):
-                        return print('Aqui hay una ficha, prueba con otra casilla.')
+                        if self.jungando == 0:
+                            self.jungando = 1
+                        else:
+                            self.jungando = 0
+                        print('Aqui hay una ficha, prueba con otra casilla.')
+                        return aj.movimiento()
+                self.tablero[int(x2)][int(y2)] = self.tablero[int(x)][int(y)]
+                self.tablero[int(x)][int(y)] = '   '
+                aj.printTablero()
+                return aj.movimiento()
     def inciarJuego(self):
         print(Back.CYAN + Fore.BLACK + Style.DIM + '♔ Bienvenidos al Ajedrez ♚' +
               Back.RESET + Fore.RESET + Style.RESET_ALL)
@@ -134,4 +153,5 @@ class Ajedrez():
 
 aj = Ajedrez()
 aj.crearTablero()
-aj.movimiento('c1', 'e2')
+aj.pedirNombres()
+aj.movimiento()
