@@ -10,3 +10,5 @@ Acto seguido, el juego pregunta que ficha querrá mover el primer jugador (Blanc
 Dichos movimientos quedan registrados en el archivo txt.
 
 El [diagrama de flujo](./assets/diagrama.png) que sigue el código es el siguiente:
+
+![Diagrama de Flujo](./assets/diagrama.png)
