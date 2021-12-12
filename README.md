@@ -17,7 +17,7 @@ El [diagrama de flujo](./assets/diagrama.png) que sigue el código es el siguien
 
 El código empleado para resolver este ejercicio es el siguiente:
 
-```
+```py
 # Importamos los módulos requeridos para realizar la actividad.
 import os
 from colorama import *
