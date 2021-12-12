@@ -64,7 +64,7 @@ class Ajedrez():
         self.tablero = [] # Aquí se almacenará el tablero con la posición de las fichas
         self.jugador1 = '' # Nombre del primer jugador
         self.jugador2 = '' # Nombre del segundo jugador
-        self.jungando = 0 # Variable que determina de quién es el turno
+        self.jugando = 0 # Variable que determina de quién es el turno
     def crearTablero(self):
         n1 = 8 # Tando n1 como n2 son variables que sirven para más adelante realizar la creación del tablero
         n2 = 65
@@ -118,12 +118,12 @@ class Ajedrez():
         print(Fore.RESET) # Resetea el color del texto para que no sea azul constantemente.
         aj.printTablero() # Printea el tablero para que los jugadores puedan verlo.
     def movimiento(self):
-        if self.jungando == 0: # Con esta condición comprueba de quien es el turno (gracias a la variable self.jugando) y printea su nombre para informar de que es su turno.
+        if self.jugando == 0: # Con esta condición comprueba de quien es el turno (gracias a la variable self.jugando) y printea su nombre para informar de que es su turno.
             print('Turno de ' + Fore.GREEN + self.jugador1 + Fore.RESET)
-            self.jungando = 1
+            self.jugando = 1
         else:
             print('Turno de ' + Fore.BLUE + self.jugador2 + Fore.RESET)
-            self.jungando = 0
+            self.jugando = 0
         ficha = input('Introduce las coordenadas de la posición de la Ficha que quieres mover: ')
         destino = input('Introduce las coordenadas de la posición de la Casilla a donde quieres mover la Ficha: ')
         xold = ord(ficha[:1].upper()) - 64
@@ -136,10 +136,10 @@ class Ajedrez():
             if h == ord(self.tablero[int(x)][int(y)][1:2]):
                 founded = True
         if not founded:
-            if self.jungando == 0:
-                self.jungando = 1
+            if self.jugando == 0:
+                self.jugando = 1
             else:
-                self.jungando = 0
+                self.jugando = 0
             os.system('cls')
             aj.printTablero()
             print('Aqui no hay ninguna Ficha para mover, prueba con otra casilla.')
@@ -154,10 +154,10 @@ class Ajedrez():
                 x2 = x2 + (x2 - 1)
                 for j in range(9812, 9823):
                     if j == ord(self.tablero[int(x2)][int(y2)][1:2]):
-                        if self.jungando == 0:
-                            self.jungando = 1
+                        if self.jugando == 0:
+                            self.jugando = 1
                         else:
-                            self.jungando = 0
+                            self.jugando = 0
                         print('Aqui hay una ficha, prueba con otra casilla.')
                         return aj.movimiento()
                 self.tablero[int(x2)][int(y2)] = self.tablero[int(x)][int(y)]
@@ -168,10 +168,10 @@ class Ajedrez():
                 for r in range(18):
                     toWrite.append(' '.join(self.tablero[r]) + '\n')
                 with open('./tablero.txt', 'a', encoding="utf-8") as f:
-                    if self.jungando == 0:
-                        f.write(separator + ' Movimento de ' + self.jugador2 + ' ' + separator + '\n')
+                    if self.jugando == 0:
+                        f.write(separator + ' Movimento de ' + self.jugador2 + ': ' + ficha.upper() + ' -> ' + destino.upper() + ' ' + separator + '\n')
                     else:
-                        f.write(separator + ' Movimento de ' + self.jugador1 + ' ' + separator + '\n')
+                        f.write(separator + ' Movimento de ' + self.jugador1 + ': ' + ficha.upper() + ' -> ' + destino.upper() + ' ' + separator + '\n')
                     f.writelines(toWrite)
                 return aj.movimiento()
     def inciarJuego(self):
